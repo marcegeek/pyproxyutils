@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=80", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "proxyutils"
+dynamic = ["version"]
+description = "Some utils for discovering and using proxies with requests"
+readme = "README.md"
+license = "Apache-2.0"
+authors = [
+    {name = "Marcelo Castellano", email = "marce.geek22@gmail.com"},
+]
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+    "requests[socks] >= 2.32",
+    "urllib3 >= 2.5",
+    "PySocks >= 1.7",
+    "beautifulsoup4 >= 4.14",
+    "pytimeparse2 >= 1.7",
+]
+
+[project.urls]
+Homepage = "https://github.com/marcegeek/pyproxyutils"
+
+[tool.setuptools_scm]

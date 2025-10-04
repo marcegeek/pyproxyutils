@@ -1,17 +1,3 @@
-# pyproxyutils
-
-Some utils for discovering and using proxies with requests in Python, currently it only supports
-getting proxies from [ProxyDB](https://proxydb.net).
-
-## Basic usage example
-
-The example below shows how to get a list of proxies from ProxyDB, limiting to specific countries
-and proxy protocols. The list is already sorted by best uptime, then by more recently checked
-and best response time.
-
-Then the list is used to create a ResilientProxySession to get the origin IP from [httpbin.org](https://httpbin.org).
-
-```python
 import requests
 
 from proxyutils import proxydb, ResilientProxySession
@@ -37,4 +23,3 @@ proxies = proxydb.get_proxies(countries=['US', 'DE'], protocols=['http'])
 with ResilientProxySession(proxies) as ses:
     print('With a proxy:')
     print_origin_ip(session=ses)
-```
