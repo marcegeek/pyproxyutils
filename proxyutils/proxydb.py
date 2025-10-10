@@ -1,5 +1,7 @@
 """ProxyDB (https://proxydb.net) scraping module."""
 
+from __future__ import annotations
+
 import datetime as dt
 import logging
 import re
@@ -43,6 +45,17 @@ class ProxyDBProxy(Proxy):
     uptime_checks: int
     last_successful: dt.datetime
     last_failed: dt.datetime
+
+    @staticmethod
+    def sort_key(proxy: ProxyDBProxy) -> tuple[float, dt.timedelta, float]:
+        """Default sort key for proxy objects, from best to worst.
+
+        Sorting criteria:
+        - uptime descending (higher is better)
+        - last_checked ascending (smaller timedelta = more recently checked)
+        - response_time ascending (lower is better)
+        """
+        return -proxy.uptime * proxy.uptime_checks/100, proxy.last_checked, proxy.response_time
 
 
 def get_proxies(
